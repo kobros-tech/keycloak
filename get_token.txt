@@ -1,0 +1,23 @@
+curl --location --request POST 'http://{your-keycloak-server}/auth/realms/{realm}/protocol/openid-connect/token' \
+--header 'Content-Type: application/x-www-form-urlencoded' \
+--data-urlencode 'grant_type=client_credentials' \
+--data-urlencode 'client_id={your-client-id}' \
+--data-urlencode 'client_secret={your-client-secret}'
+
+==================================================================
+
+curl --location --request POST 'http://localhost:8080/realms/myrealm/protocol/openid-connect/token' \
+--header 'Content-Type: application/x-www-form-urlencoded' \
+--data-urlencode 'grant_type=client_credentials' \
+--data-urlencode 'client_id=confidential-client' \
+--data-urlencode 'client_secret=dYldgV0QOxFDGViOmw2sIsYcRwpI7apL' \
+
+
+curl --location --request POST 'http://localhost:8080/realms/myrealm/protocol/openid-connect/token' \
+--header 'Content-Type: application/x-www-form-urlencoded' \
+--data 'grant_type=client_credentials&client_id=confidential-client&client_secret=dYldgV0QOxFDGViOmw2sIsYcRwpI7apL'
+
+==================================================================
+
+curl --location --request GET 'http://{your-api-server-endpoint}' \
+--header 'Authorization: Bearer {access-token}'
